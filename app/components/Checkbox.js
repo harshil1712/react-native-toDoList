@@ -12,7 +12,7 @@ export default class Checkbox extends Component {
           style={{flex: 1, padding: 10}}
           onClick={()=>{}}
           // isChecked={data.checked}
-          leftText="Hello"
+          leftText={this.props.leftText}
           leftTextStyle={{flex:1, fontSize: 15}}
       />)
   }

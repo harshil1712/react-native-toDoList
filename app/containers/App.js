@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import Title from '../components/Title'
 import Footer from '../components/Footer'
 import List from '../components/List'
+import Input from '../components/Input'
 
 import { actionCreators } from '../redux/todoRedux'
 
@@ -27,11 +28,18 @@ class App extends Component {
     dispatch: PropTypes.func.isRequired,
   }
 
+  onAddItem = (text) => {
+    const { dispatch } = this.props
+    dispatch(actionCreators.addItem(text))
+  }
+
   render() {
+    const {items} = this.props
     return (
       <View style={styles.container}>
         <Title />
-        <List />
+        <Input onSubmitEditing={this.onAddItem} />
+        <List list={items} />
         <Footer />
       </View>
     )
