@@ -33,13 +33,21 @@ class App extends Component {
     dispatch(actionCreators.addItem(text))
   }
 
+  onRemoveItem = (index) => {
+    const { dispatch } = this.props
+    dispatch(actionCreators.removeItem(index))
+  }
+
   render() {
     const {items} = this.props
     return (
       <View style={styles.container}>
         <Title />
         <Input onSubmitEditing={this.onAddItem} />
-        <List list={items} />
+        <List 
+          list={items}
+          onPressItem={this.onRemoveItem}  
+        />
         <Footer />
       </View>
     )

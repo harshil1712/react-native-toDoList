@@ -26,7 +26,7 @@ export default class List extends Component {
     return(
       <View style={itemStyle} key={i}>
         <Checkbox leftText={text} />
-        <TouchableOpacity><Text style={remove}>X</Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=>onPressItem(i)}><Text style={remove}>X</Text></TouchableOpacity>
       </View>
     )
   }

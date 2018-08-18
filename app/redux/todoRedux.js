@@ -1,5 +1,6 @@
 export const types = {
-  ADD_ITEM: 'ADD_ITEM'
+  ADD_ITEM: 'ADD_ITEM',
+  REMOVE_ITEM: 'REMOVE_ITEM'
 }
 
 export const actionCreators = {
@@ -7,6 +8,12 @@ export const actionCreators = {
     return {
       type: types.ADD_ITEM,
       payload: item
+    }
+  },
+  removeItem: (index) => {
+    return {
+      type: types.REMOVE_ITEM,
+      payload: index
     }
   }
 }
@@ -24,6 +31,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         items :[payload, ...items]
+      }
+    }
+    case types.REMOVE_ITEM: {
+      return{
+        ...state,
+        items: items.filter((items,i)=> i!== payload)
       }
     }
     default: {
