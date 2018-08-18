@@ -30,12 +30,22 @@ class App extends Component {
 
   onAddItem = (text) => {
     const { dispatch } = this.props
-    dispatch(actionCreators.addItem(text))
+    dispatch(actionCreators.addItem({text:text, checked:false}))
   }
 
   onRemoveItem = (index) => {
     const { dispatch } = this.props
     dispatch(actionCreators.removeItem(index))
+  }
+
+  onChange = (item,index) => {
+    const { dispatch } = this.props
+    dispatch(actionCreators.toogleItem(index))
+  }
+
+  onRemoveCompleted =() => {
+    const { dispatch } = this.props
+    dispatch(actionCreators.remComItems())
   }
 
   render() {
@@ -46,9 +56,10 @@ class App extends Component {
         <Input onSubmitEditing={this.onAddItem} />
         <List 
           list={items}
-          onPressItem={this.onRemoveItem}  
+          onPressItem={this.onRemoveItem}
+          onChange={this.onChange}  
         />
-        <Footer />
+        <Footer remove={this.onRemoveCompleted}/>
       </View>
     )
   }

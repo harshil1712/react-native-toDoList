@@ -17,8 +17,9 @@ const styles = StyleSheet.create({
 
 export default class Footer extends Component {
   render() {
+    const {remove} = this.props
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>remove()}>
         <View style={styles.container}>
           <Text style={styles.textStyle}>Remove Completed Items</Text>
         </View>

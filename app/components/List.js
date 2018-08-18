@@ -19,13 +19,14 @@ const styles = StyleSheet.create({
 
 export default class List extends Component {
 
-  renderItem = (text,i) =>{
-    const { onPressItem } = this.props
+  renderItem = (item,i) =>{
+    const { onPressItem, onChange } = this.props
     const { itemStyle, remove } = styles;
+    console.log(item);
 
     return(
       <View style={itemStyle} key={i}>
-        <Checkbox leftText={text} />
+        <Checkbox label={item.text} onChange={()=>onChange(item,i)} checked={item.checked} />
         <TouchableOpacity onPress={()=>onPressItem(i)}><Text style={remove}>X</Text></TouchableOpacity>
       </View>
     )
